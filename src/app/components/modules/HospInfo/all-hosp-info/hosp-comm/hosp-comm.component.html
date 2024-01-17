@@ -1,0 +1,61 @@
+<div class="myHeader">
+    <h5 class="header">Hospital Communication Details</h5>
+    <div class="mySearch">
+        <label for="status">Search: </label>
+        <select [(ngModel)]="status" name="status">
+            <option value="">All</option>
+            <option *ngFor="let statusOption of statusOptions" [value]="statusOption">{{ statusOption }}</option>
+        </select>
+        <button (click)="search()" class="pl-2 pr-2 mx-2 search-button">Search</button>
+    </div>
+</div>
+<div *ngIf="dataAvailable; else noDataMessage">
+    <table class="hospital-table">
+        <tr>
+            <th>Comm Id</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>District</th>
+            <th>Email Id</th>
+            <th>Land Mark</th>
+            <th>Mobile No</th>
+            <th>Pincode</th>
+            <th>State</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let hospital of hospitals">
+            <td>{{ hospital.hospCommunicationDtls.hospCommunicationId}}</td>
+            <td>{{ hospital.hospCommunicationDtls.hospAddress}}</td>
+            <td>{{ hospital.hospCommunicationDtls.hospCity}}</td>
+            <td>{{ hospital.hospCommunicationDtls.hospDistrict}}</td>
+            <td>{{ hospital.hospCommunicationDtls.hospState}}</td>
+            <td>{{ hospital.hospCommunicationDtls.hospLandMark}}</td>
+            <td>{{ hospital.hospCommunicationDtls.hospPincode}}</td>
+            <td>{{ hospital.hospCommunicationDtls.hospMobileNo}}</td>
+            <td>{{ hospital.hospCommunicationDtls.hospEmailId}}</td>
+            <td>
+                <button class="pl-2 pr-2 mx-2 search-button" (click)="openUpdatePage(hospital.hospId)">update</button>
+                <button class="pl-2 pr-2 mx-2 search-button" (click)="deleteMyprofile(hospital.hospId)">delete</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<ng-template #noDataMessage>
+    <table class="hospital-table">
+        <tr>
+            <th>Comm Id</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>District</th>
+            <th>Email Id</th>
+            <th>Land Mark</th>
+            <th>Mobile No</th>
+            <th>Pincode</th>
+            <th>State</th>
+            <th></th>
+        </tr>
+        <td colspan="10" class="noDataFound">No data found</td>
+    </table>
+</ng-template>
+<br>

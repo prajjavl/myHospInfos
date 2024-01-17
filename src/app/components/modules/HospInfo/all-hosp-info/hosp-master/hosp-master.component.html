@@ -1,0 +1,58 @@
+<div class="myHeader">
+    <h5 class="header">Hospital Master Details</h5>
+    <div class="mySearch">
+        <label for="status">Search: </label>
+        <select [(ngModel)]="status" name="status">
+            <option value="">All</option>
+            <option *ngFor="let statusOption of statusOptions" [value]="statusOption">{{ statusOption }}</option>
+        </select>
+        <button (click)="search()" class="pl-2 pr-2 mx-2 search-button">Search</button>
+    </div>
+</div>
+
+<div *ngIf="dataAvailable; else noDataMessage">
+    <table class="hospital-table">
+        <tr>
+            <th>Hosp ID</th>
+            <th>Code</th>
+            <th>Record Status</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+            <th>Modified Date</th>
+            <th>Modified By</th>
+            <th>Trans Status ID</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let hospital of hospitals">
+            <td>{{ hospital.hospId }}</td>
+            <td>{{ hospital.hospCode }}</td>
+            <td>{{ hospital.recordStatus }}</td>
+            <td>{{ hospital.createdDate }}</td>
+            <td>{{ hospital.createdBy }}</td>
+            <td>{{ hospital.modifiedDate }}</td>
+            <td>{{ hospital.modifiedBy }}</td>
+            <td>{{ hospital.hospTransStatusId }}</td>
+            <td>
+                <button class="pl-2 pr-2 mx-2 search-button" (click)="openUpdatePage(hospital.hospId)">update</button>
+                <button class="pl-2 pr-2 mx-2 search-button" (click)="deleteMyprofile(hospital.hospId)">delete</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<ng-template #noDataMessage>
+    <table class="hospital-table">
+        <tr>
+            <th>Hosp ID</th>
+            <th>Hosp Code</th>
+            <th>Record Status</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+            <th>Modified Date</th>
+            <th>Modified By</th>
+            <th>Hosp Trans Status ID</th>
+        </tr>
+        <td colspan="8" class="noDataFound">No data found</td>
+    </table>
+</ng-template>
+<br><br>

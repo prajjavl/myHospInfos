@@ -1,0 +1,24 @@
+.myNav {
+    display: flex;
+    margin: 20px 20px 0px 20px;
+    border-bottom: 1.5px solid darkblue;
+
+}
+
+.myNav p {
+    text-decoration: none;
+    color: rgb(41, 31, 96);
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.myNav p:hover {
+    color: rgb(38, 82, 118);
+    cursor: pointer;
+}
+
+.myNav p.active {
+    color: darkblue;
+    font-weight: 600;
+}

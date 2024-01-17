@@ -1,0 +1,40 @@
+.my_container{
+    width: 1100px;
+    height: 400px;
+    margin: 6%;
+    border: 2px solid black;
+    background: rgba(0,0,0,.55);
+    padding: 40px;
+    border: 1px solid rgba(255,255,255,.55);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.my_title{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.line {
+    height: 1px;
+    width: 260px;
+    margin: 20px auto;
+    background: #46fbdf;
+}
+.right-panel b, b{
+    color: gold;
+}
+.right-panel p{
+    color: aqua;
+}
+
+.container{
+    width: 1100px;
+    height: 600px;
+    margin: 6%;
+    color: antiquewhite;
+    background: rgba(0,0,0,.55);
+    padding: 40px;
+    border: 1px solid rgba(255,255,255,.55);
+    border-radius: 5px;
+    overflow: hidden;
+}

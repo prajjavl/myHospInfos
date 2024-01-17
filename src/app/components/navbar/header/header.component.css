@@ -1,0 +1,58 @@
+/* Add your styling for the navbar here */
+.navbar {
+    background-color: #333;
+    padding: 35px;
+    border-radius: 0;
+}
+
+.mycontainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+}
+
+.logo img {
+    height: 60px;
+    width: 100px;
+    /* Adjust the height as needed */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 12px 0px 12px 40px;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.nav-links a:hover {
+    color: #ffcc00;
+    /* Change color on hover as needed */
+}
+
+.text {
+    font-size:xx-large;
+    /* background-color: #FF0000; */
+    background: linear-gradient(to right, rgba(0, 168, 253), #fff 35%, #e00a95);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 3s linear infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 75%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 70%; }
+}
