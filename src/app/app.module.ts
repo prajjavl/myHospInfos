@@ -17,7 +17,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutUsComponent } from './components/navbar/about-us/about-us.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TableModule,
+    ButtonModule,
+    AvatarModule,
+    AvatarGroupModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

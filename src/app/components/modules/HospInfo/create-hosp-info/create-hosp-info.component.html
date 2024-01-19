@@ -1,4 +1,4 @@
-<div class="container">
+<div class="myContainer">
     <div class="my_title">
         <h1>New Hospital entry</h1>
         <div class="line"></div>
@@ -8,74 +8,79 @@
         <form class="my_form" enctype="multipart/form-data" (ngSubmit)="createHosp()" #hospitalForm="ngForm">
             <h5 class="header">Hospital Master Details</h5>
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="recordStatus">Record Status:</label>
-                    <select id="recordStatus" name="recordStatus" class="form-control" [(ngModel)]="hospInfo.recordStatus" required #recordStatus="ngModel">
-                        <option value="" disabled selected>Select Record Status</option>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
+                <div class="form-group col-md-4">
+                    <label for="recordStatus">Record Status<small class="warningMsg">*</small></label>
+                    <p-dropdown id="recordStatus" name="recordStatus" [(ngModel)]="hospInfo.recordStatus"
+                        [options]="recordStatusOptions" optionLabel="label" placeholder="Select Record Status"
+                        #recordStatus="ngModel" [required]="true"></p-dropdown>
                     <div *ngIf="recordStatus.invalid && (recordStatus.dirty || recordStatus.touched)">
-                        <small class="text-danger" *ngIf="recordStatus.errors?.['required']">Record Status is required</small>
+                        <small class="text-danger" *ngIf="recordStatus.errors?.['required']">Record Status is
+                            required</small>
                     </div>
                 </div>
 
-                <div class="form-group col-md-6">
-                    <label for="hospTransStatusId">Transaction Status:</label>
-                    <select id="hospTransStatusId" name="hospTransStatusId" class="form-control" [(ngModel)]="hospInfo.hospTransStatusId" required #hospTransStatusId="ngModel">
-                        <option value="" disabled selected>Select Transaction Record Status</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Open">Open</option>
-                        <option value="Close">Close</option>
-                    </select>
+                <div class="form-group col-md-4">
+                    <label for="hospTransStatusId">Transaction Status<small class="warningMsg">*</small></label>
+                    <p-dropdown id="hospTransStatusId" name="hospTransStatusId" [(ngModel)]="hospInfo.hospTransStatusId"
+                        [options]="hospTransStatusOptions" placeholder="Select Transaction Record Status"
+                        [required]="true" #hospTransStatusId="ngModel"></p-dropdown>
                     <div *ngIf="hospTransStatusId.invalid && (hospTransStatusId.dirty || hospTransStatusId.touched)">
-                        <small class="text-danger" *ngIf="hospTransStatusId.errors?.['required']">Transaction Status is required</small>
+                        <small class="text-danger" *ngIf="hospTransStatusId.errors?.['required']">Transaction Status is
+                            required</small>
                     </div>
                 </div>
 
-                <!-- <div class="form-group col-md-4">
-                    <label for="modifiedBy">Modified By:</label>
+                <div class="form-group col-md-4">
+                    <label for="modifiedBy">Modified By<small class="warningMsg">*</small></label>
                     <input type="text" id="modifiedBy" name="modifiedBy" class="modifiedBy-form-control" [(ngModel)]="hospInfo.modifiedBy" required #modifiedBy="ngModel">
                     <div *ngIf="modifiedBy.invalid && (modifiedBy.dirty || modifiedBy.touched)">
                         <small class="text-danger" *ngIf="modifiedBy.errors?.['required']">Modified By is required</small>
                     </div>
-                </div> -->
+                </div>
             </div>
-            
+
             <br><br>
             <h5 class="header">Hospital Information Details</h5>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="hospName">Hospital Name:</label>
-                    <input type="text" id="hospName" name="hospName" class="form-control" [(ngModel)]="hospInfo.hospInfoDtls.hospName" required #hospName="ngModel">
+                    <label for="hospName">Hospital Name<small class="warningMsg">*</small></label>
+                    <input type="text" id="hospName" name="hospName" class="form-control"
+                        [(ngModel)]="hospInfo.hospInfoDtls.hospName" required #hospName="ngModel">
                     <div *ngIf="hospName.invalid && (hospName.dirty || hospName.touched)">
-                        <small class="text-danger" *ngIf="hospName.errors?.['required']">Hospital Name is required</small>
+                        <small class="text-danger" *ngIf="hospName.errors?.['required']">Hospital Name is
+                            required</small>
                     </div>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="hospShortName">Hospital Short Name:</label>
-                    <input type="text" id="hospShortName" name="hospShortName" class="form-control" [(ngModel)]="hospInfo.hospInfoDtls.hospShortName" required #hospShortName="ngModel">
+                    <label for="hospShortName">Hospital Short Name<small class="warningMsg">*</small></label>
+                    <input type="text" id="hospShortName" name="hospShortName" class="form-control"
+                        [(ngModel)]="hospInfo.hospInfoDtls.hospShortName" required #hospShortName="ngModel">
                     <div *ngIf="hospShortName.invalid && (hospShortName.dirty || hospShortName.touched)">
-                        <small class="text-danger" *ngIf="hospShortName.errors?.['required']">ShortName is required</small>
+                        <small class="text-danger" *ngIf="hospShortName.errors?.['required']">ShortName is
+                            required</small>
                     </div>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="hospRegisteredNo">Registered No:</label>
-                    <input type="text" id="hospRegisteredNo" name="hospRegisteredNo" class="form-control" [(ngModel)]="hospInfo.hospInfoDtls.hospRegisteredNo" required #hospRegisteredNo="ngModel">
+                    <label for="hospRegisteredNo">Registered No<small class="warningMsg">*</small></label>
+                    <input type="text" id="hospRegisteredNo" name="hospRegisteredNo" class="form-control"
+                        [(ngModel)]="hospInfo.hospInfoDtls.hospRegisteredNo" required #hospRegisteredNo="ngModel">
                     <div *ngIf="hospRegisteredNo.invalid && (hospRegisteredNo.dirty || hospRegisteredNo.touched)">
-                        <small class="text-danger" *ngIf="hospRegisteredNo.errors?.['required']">Registered No is required</small>
+                        <small class="text-danger" *ngIf="hospRegisteredNo.errors?.['required']">Registered No is
+                            required</small>
                     </div>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="hospOwnerName">Owner Name:</label>
-                    <input type="text" id="hospOwnerName" name="hospOwnerName" class="form-control" [(ngModel)]="hospInfo.hospInfoDtls.hospOwnerName" required #hospOwnerName="ngModel">
+                    <label for="hospOwnerName">Owner Name<small class="warningMsg">*</small></label>
+                    <input type="text" id="hospOwnerName" name="hospOwnerName" class="form-control"
+                        [(ngModel)]="hospInfo.hospInfoDtls.hospOwnerName" required #hospOwnerName="ngModel">
                     <div *ngIf="hospOwnerName.invalid && (hospOwnerName.dirty || hospOwnerName.touched)">
-                        <small class="text-danger" *ngIf="hospOwnerName.errors?.['required']">Owner Name is required</small>
+                        <small class="text-danger" *ngIf="hospOwnerName.errors?.['required']">Owner Name is
+                            required</small>
                     </div>
                 </div>
             </div>
@@ -83,16 +88,18 @@
             <h5 class="header">Hospital Communication Details</h5>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="hospAddress">Address:</label>
-                    <input type="text" id="hospAddress" name="hospAddress" class="form-control" [(ngModel)]="hospInfo.hospCommunicationDtls.hospAddress" required #hospAddress="ngModel">
+                    <label for="hospAddress">Address<small class="warningMsg">*</small></label>
+                    <input type="text" id="hospAddress" name="hospAddress" class="form-control"
+                        [(ngModel)]="hospInfo.hospCommunicationDtls.hospAddress" required #hospAddress="ngModel">
                     <div *ngIf="hospAddress.invalid && (hospAddress.dirty || hospAddress.touched)">
                         <small class="text-danger" *ngIf="hospAddress.errors?.['required']">Address is required</small>
                     </div>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="hospCity">City:</label>
-                    <input type="text" id="hospCity" name="hospCity" class="form-control" [(ngModel)]="hospInfo.hospCommunicationDtls.hospCity" required #hospCity="ngModel">
+                    <label for="hospCity">City<small class="warningMsg">*</small></label>
+                    <input type="text" id="hospCity" name="hospCity" class="form-control"
+                        [(ngModel)]="hospInfo.hospCommunicationDtls.hospCity" required #hospCity="ngModel">
                     <div *ngIf="hospCity.invalid && (hospCity.dirty || hospCity.touched)">
                         <small class="text-danger" *ngIf="hospCity.errors?.['required']">City is required</small>
                     </div>
@@ -101,57 +108,67 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="hospDistrict">District:</label>
-                    <input type="text" id="hospDistrict" name="hospDistrict" class="form-control" [(ngModel)]="hospInfo.hospCommunicationDtls.hospDistrict" required #hospDistrict="ngModel">
+                    <label for="hospDistrict">District<small class="warningMsg">*</small></label>
+                    <input type="text" id="hospDistrict" name="hospDistrict" class="form-control"
+                        [(ngModel)]="hospInfo.hospCommunicationDtls.hospDistrict" required #hospDistrict="ngModel">
                     <div *ngIf="hospDistrict.invalid && (hospDistrict.dirty || hospDistrict.touched)">
-                        <small class="text-danger" *ngIf="hospDistrict.errors?.['required']">District is required</small>
+                        <small class="text-danger" *ngIf="hospDistrict.errors?.['required']">District is
+                            required</small>
                     </div>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="hospState">State:</label>
-                    <select id="hospState" name="hospState" class="form-control" [(ngModel)]="hospInfo.hospCommunicationDtls.hospState"  required #hospState="ngModel">
-                        <option value="" disabled selected>Select State</option>
-                        <option value="Active" *ngFor="let state of stateNames" [value]="state">{{state}}</option>
-                    </select>
+                    <label for="hospState">State<small class="warningMsg">*</small></label>
+                    <p-dropdown id="hospState" name="hospState" [(ngModel)]="hospInfo.hospCommunicationDtls.hospState"
+                        [options]="stateOptions" placeholder="Select State" [required]="true"
+                        #hospState="ngModel"></p-dropdown>
                     <div *ngIf="hospState.invalid && (hospState.dirty || hospState.touched)">
                         <small class="text-danger" *ngIf="hospState.errors?.['required']">State is required</small>
                     </div>
                 </div>
+
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="hospLandMark">LandMark:</label>
-                    <input type="text" id="hospLandMark" name="hospLandMark" class="form-control" [(ngModel)]="hospInfo.hospCommunicationDtls.hospLandMark" required #hospLandMark="ngModel">
+                    <label for="hospLandMark">LandMark<small class="warningMsg">*</small></label>
+                    <input type="text" id="hospLandMark" name="hospLandMark" class="form-control"
+                        [(ngModel)]="hospInfo.hospCommunicationDtls.hospLandMark" required #hospLandMark="ngModel">
                     <div *ngIf="hospLandMark.invalid && (hospLandMark.dirty || hospLandMark.touched)">
-                        <small class="text-danger" *ngIf="hospLandMark.errors?.['required']">LandMark is required</small>
+                        <small class="text-danger" *ngIf="hospLandMark.errors?.['required']">LandMark is
+                            required</small>
                     </div>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="hospPincode">Pincode:</label>
-                    <input type="number" id="hospPincode" name="hospPincode" pattern="[0-9]{6}" class="form-control" [(ngModel)]="hospInfo.hospCommunicationDtls.hospPincode" required #hospPincode="ngModel">
+                    <label for="hospPincode">Pincode<small class="warningMsg">*</small></label>
+                    <input type="number" id="hospPincode" name="hospPincode" pattern="[0-9]{6}" class="form-control"
+                        [(ngModel)]="hospInfo.hospCommunicationDtls.hospPincode" required #hospPincode="ngModel">
                     <div *ngIf="hospPincode.invalid && (hospPincode.dirty || hospPincode.touched)">
                         <small class="text-danger" *ngIf="hospPincode.errors?.['required']">Pincode is required</small>
-                        <small class="text-danger" *ngIf="hospPincode.errors?.['pattern']">Invalid Pincode format (should be a 6-digit number)</small>
+                        <small class="text-danger" *ngIf="hospPincode.errors?.['pattern']">Invalid Pincode format
+                            (should be a 6-digit number)</small>
                     </div>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="hospMobileNo">Mobile No:</label>
-                    <input type="tel" id="hospMobileNo" name="hospMobileNo" pattern="[0-9]{10}" class="form-control" [(ngModel)]="hospInfo.hospCommunicationDtls.hospMobileNo" required #hospMobileNo="ngModel">
+                    <label for="hospMobileNo">Mobile No<small class="warningMsg">*</small></label>
+                    <input type="tel" id="hospMobileNo" name="hospMobileNo" pattern="[0-9]{10}" class="form-control"
+                        [(ngModel)]="hospInfo.hospCommunicationDtls.hospMobileNo" required #hospMobileNo="ngModel">
                     <div *ngIf="hospMobileNo.invalid && (hospMobileNo.dirty || hospMobileNo.touched)">
-                        <small class="text-danger" *ngIf="hospMobileNo.errors?.['required']">Mobile Number is required</small>
-                        <small class="text-danger" *ngIf="hospMobileNo.errors?.['pattern']">Invalid Mobile Number format (should be a 10-digit number)</small>
+                        <small class="text-danger" *ngIf="hospMobileNo.errors?.['required']">Mobile Number is
+                            required</small>
+                        <small class="text-danger" *ngIf="hospMobileNo.errors?.['pattern']">Invalid Mobile Number format
+                            (should be a 10-digit number)</small>
                     </div>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="hospEmailId">Email Id:</label>
-                    <input type="email" id="hospEmailId" name="hospEmailId" class="form-control" [(ngModel)]="hospInfo.hospCommunicationDtls.hospEmailId" required #hospEmailId="ngModel" email>
+                    <label for="hospEmailId">Email Id<small class="warningMsg">*</small></label>
+                    <input type="email" id="hospEmailId" name="hospEmailId" class="form-control"
+                        [(ngModel)]="hospInfo.hospCommunicationDtls.hospEmailId" required #hospEmailId="ngModel" email>
                     <div *ngIf="hospEmailId.invalid && (hospEmailId.dirty || hospEmailId.touched)">
                         <small class="text-danger" *ngIf="hospEmailId.errors?.['required']">Email Id is required</small>
                         <small class="text-danger" *ngIf="hospEmailId.touched && hospEmailId.errors?.['email']">
@@ -161,10 +178,11 @@
                 </div>
             </div>
             <br><br>
-            
+
             <div class="form-row submit">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary" [disabled]="hospitalForm.invalid">Add Hospital</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="hospitalForm.invalid">Add
+                        Hospital</button>
                     <button type="reset" class="btn btn-secondary mx-2">Reset</button>
                 </div>
             </div>

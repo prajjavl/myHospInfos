@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~primeng/resources/themes/saga-blue/theme.css';
+@import '~primeng/resources/primeng.min.css';
 .myHeader{
     display: flex;
     width: 1245px;
@@ -12,7 +14,7 @@
 
 .header, label {
     padding: 8px;
-    margin-left: 5px;
+    margin-left: 13px;
     font-weight: 500;
     font-size: 15px;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { SelectItem } from 'primeng/api';
 import { HospInfoService } from 'src/app/components/services/hosp-info.service';
 
 @Component({
@@ -8,16 +9,28 @@ import { HospInfoService } from 'src/app/components/services/hosp-info.service';
   templateUrl: './create-hosp-info.component.html',
   styleUrls: ['./create-hosp-info.component.css']
 })
-export class CreateHospInfoComponent implements OnInit{
+export class CreateHospInfoComponent implements OnInit {
   hospInfo: any = {
     hospInfoDtls: {},
     hospCommunicationDtls: {}
   };
+  // Inside your component class
+  recordStatusOptions = [
+    { label: 'Active', value: 'Active' },
+    // { label: 'Inactive', value: 'Inactive' }
+  ];
+  hospTransStatusOptions: SelectItem[] = [
+    { label: 'Pending', value: 'Pending' },
+    { label: 'Open', value: 'Open' },
+    { label: 'Close', value: 'Close' }
+  ];
 
   stateNames: string[] = [];
 
+  stateOptions: SelectItem[] = [];
+
   constructor(private hospInfoService: HospInfoService, private snackBar: MatSnackBar, private router: Router) {
-    this.stateNames = hospInfoService.getStateNames();
+    this.stateOptions = this.hospInfoService.getStateNames().map(state => ({ label: state, value: state }));
   }
 
   ngOnInit(): void {

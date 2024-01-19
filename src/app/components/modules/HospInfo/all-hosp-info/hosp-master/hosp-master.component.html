@@ -10,49 +10,43 @@
     </div>
 </div>
 
-<div *ngIf="dataAvailable; else noDataMessage">
-    <table class="hospital-table">
-        <tr>
-            <th>Hosp ID</th>
-            <th>Code</th>
-            <th>Record Status</th>
-            <th>Created Date</th>
-            <th>Created By</th>
-            <th>Modified Date</th>
-            <th>Modified By</th>
-            <th>Trans Status ID</th>
-            <th></th>
-        </tr>
-        <tr *ngFor="let hospital of hospitals">
-            <td>{{ hospital.hospId }}</td>
-            <td>{{ hospital.hospCode }}</td>
-            <td>{{ hospital.recordStatus }}</td>
-            <td>{{ hospital.createdDate }}</td>
-            <td>{{ hospital.createdBy }}</td>
-            <td>{{ hospital.modifiedDate }}</td>
-            <td>{{ hospital.modifiedBy }}</td>
-            <td>{{ hospital.hospTransStatusId }}</td>
-            <td>
-                <button class="pl-2 pr-2 mx-2 search-button" (click)="openUpdatePage(hospital.hospId)">update</button>
-                <button class="pl-2 pr-2 mx-2 search-button" (click)="deleteMyprofile(hospital.hospId)">delete</button>
-            </td>
-        </tr>
-    </table>
+<div class="card">
+    <p-table #dt1 [value]="hospitals" dataKey="id" [rows]="5" [showCurrentPageReport]="true" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>hospCode</th>
+                <th>Record Status</th>
+                <th>Created Date</th>
+                <th>Created By</th>
+                <th>Modified Date</th>
+                <th>Modified By</th>
+                <th>Trans Status ID</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-hospital>
+            <tr>
+                <td>{{ hospital.hospCode }}</td>
+                <td>{{ hospital.recordStatus }}</td>
+                <td>{{ hospital.createdDate }}</td>
+                <td>{{ hospital.createdBy }}</td>
+                <td>{{ hospital.modifiedDate }}</td>
+                <td>{{ hospital.modifiedBy }}</td>
+                <td>{{ hospital.hospTransStatusId }}</td>
+                <td>
+                    <button class="pl-2 pr-2 mx-2 search-button"
+                        (click)="openUpdatePage(hospital.hospId)">update</button>
+                    <button class="pl-2 pr-2 mx-2 search-button"
+                        (click)="deleteMyprofile(hospital.hospId)">delete</button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
 </div>
-
-<ng-template #noDataMessage>
-    <table class="hospital-table">
-        <tr>
-            <th>Hosp ID</th>
-            <th>Hosp Code</th>
-            <th>Record Status</th>
-            <th>Created Date</th>
-            <th>Created By</th>
-            <th>Modified Date</th>
-            <th>Modified By</th>
-            <th>Hosp Trans Status ID</th>
-        </tr>
-        <td colspan="8" class="noDataFound">No data found</td>
-    </table>
-</ng-template>
-<br><br>

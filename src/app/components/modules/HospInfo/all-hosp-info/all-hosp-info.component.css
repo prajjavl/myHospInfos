@@ -22,3 +22,113 @@
     color: darkblue;
     font-weight: 600;
 }
+
+/* Pagination Styles */
+:host ::ng-deep .p-paginator {
+    border: none;
+    margin: 15px;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-current {
+    font-size: 13px;
+    color: #a0ace3;
+    position: absolute;
+    font-weight: 600;
+    right: 0;
+    margin-right: 20px;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-first,
+:host ::ng-deep .p-paginator .p-paginator-prev,
+:host ::ng-deep .p-paginator .p-paginator-next,
+:host ::ng-deep .p-paginator .p-paginator-last {
+    border: 1px solid #f4f4f4;
+    background-color: #f4f4f4;
+    width: 32px;
+    height: 32px;
+    margin: 0 6px !important;
+    border-radius: 4px;
+}
+
+:host ::ng-deep .p-paginator-icon.pi {
+    font-size: 1.3rem;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background-color: #fff;
+    border: 1px solid #354cb5;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #354cb5;
+    min-width: 3.357rem;
+    height: 3.357rem;
+}
+
+:host ::ng-deep .p-paginator-rpp-options.p-dropdown {
+    background-color: #fff;
+    border: 1px solid #a0ace3;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #354cb5;
+    min-width: 3.357rem;
+    height: 3.357rem;
+}
+
+:host ::ng-deep .p-datatable-wrapper {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+:host ::ng-deep .p-paginator .p-dropdown .p-dropdown-label {
+    padding: 6px;
+    font-size: 13px;
+    color: #a0ace3;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+    border: 1px solid #a0ace3;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #a0ace3;
+    min-width: 3.357rem;
+    height: 3.357rem;
+    margin: 0 4px;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {
+    background-color: inherit;
+    border: 1px solid #a0ace3;
+    color: #a0ace3;
+}
+
+::ng-deepbutton.p-ripple.p-element.p-button.p-component.p-button-icon-only.p-button-text {
+    display: none;
+}
+
+
+:host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
+    background-color: #f4f6fc;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #212529;
+    padding: 12px 10px !important;
+    text-transform: capitalize;
+}
+
+:host ::ng-deep .p-datatable tbody tr:nth-of-type(even) {
+    background-color: #f4f4f4;
+    font-size: 13px;
+    color: #212529;
+}
+
+:host ::ng-deep .p-datatable tbody td {
+    border: none;
+    font-size: 13px;
+    padding: 12px 10px !important;
+    font-weight: 400;
+}
