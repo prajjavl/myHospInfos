@@ -1,27 +1,49 @@
 <div class="myHeader">
-    <h5 class="header">Hospital Master Details</h5>
+    <!-- <h5 class="header">Hospital Information Details</h5> -->
     <div class="mySearch">
-        <label for="status">Search: </label>
+        <label for="status">Trans Status: </label><br>
         <select [(ngModel)]="status" name="status">
             <option value="">All</option>
             <option *ngFor="let statusOption of statusOptions" [value]="statusOption">{{ statusOption }}</option>
         </select>
-        <button (click)="search()" class="pl-2 pr-2 mx-2 search-button">Search</button>
+        <button (click)="searchByTransStatus()" class="pl-2 pr-2 mx-2 search-button">Search</button>
+    </div>
+    <div class="mySearch">
+        <label for="hospCode">Hospital Code: </label><br>
+        <select [(ngModel)]="hospCode" name="hospCode">
+            <option value="">All</option>
+            <option *ngFor="let codeOption of hospCodeOptions" [value]="codeOption">{{ codeOption }}</option>
+        </select>
+        <button (click)="searchByHospCode()" class="pl-2 pr-2 mx-2 search-button">Search</button>
+    </div>    
+    <div class="my_Search">
+        <label>Create New Record</label><br>
+        <button class="btn my_button" routerLink="/createInfo">+</button>
     </div>
 </div>
 
 <div class="card">
     <p-table #dt1 [value]="hospitals" dataKey="id" [rows]="5" [showCurrentPageReport]="true" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['hospCode', 'recordStatus', 'createdBy', 'modifiedBy', 'hospTransStatusId']">
+        <ng-template pTemplate="caption">
+            <div class="flex globalSearch justify-content-end align-items-center">
+                <div class="p-input-icon-left">
+                    <i class="fa fa-search mr-1"></i>
+                    <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                        placeholder="Search" />`
+                </div>
+            </div>
+        </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th>hospCode</th>
-                <th>Record Status</th>
-                <th>Created Date</th>
-                <th>Created By</th>
-                <th>Modified Date</th>
-                <th>Modified By</th>
-                <th>Trans Status ID</th>
+                <th pSortableColumn="hospCode">hospCode <p-sortIcon field="hospCode"></p-sortIcon></th>
+                <th pSortableColumn="recordStatus">Record Status <p-sortIcon field="recordStatus"></p-sortIcon></th>
+                <th pSortableColumn="createdDate">Created Date <p-sortIcon field="createdDate"></p-sortIcon></th>
+                <th pSortableColumn="createdBy">Created By <p-sortIcon field="createdBy"></p-sortIcon></th>
+                <th pSortableColumn="modifiedDate">Modified Date <p-sortIcon field="modifiedDate"></p-sortIcon></th>
+                <th pSortableColumn="modifiedBy">Modified By<p-sortIcon field="modifiedBy"></p-sortIcon></th>
+                <th pSortableColumn="hospTransStatusId">Transaction Status<p-sortIcon field="hospTransStatusId"></p-sortIcon></th>
                 <th></th>
             </tr>
         </ng-template>
@@ -29,9 +51,9 @@
             <tr>
                 <td>{{ hospital.hospCode }}</td>
                 <td>{{ hospital.recordStatus }}</td>
-                <td>{{ hospital.createdDate }}</td>
+                <td>{{ hospital.createdDate | date }}</td>
                 <td>{{ hospital.createdBy }}</td>
-                <td>{{ hospital.modifiedDate }}</td>
+                <td>{{ hospital.modifiedDate | date}}</td>
                 <td>{{ hospital.modifiedBy }}</td>
                 <td>{{ hospital.hospTransStatusId }}</td>
                 <td>

@@ -34,7 +34,7 @@
     color: #a0ace3;
     position: absolute;
     font-weight: 600;
-    right: 0;
+    left: 0;
     margin-right: 20px;
 }
 
@@ -131,4 +131,25 @@
     font-size: 13px;
     padding: 12px 10px !important;
     font-weight: 400;
+}
+
+
+.p-input-icon-left input{
+    color: darkblue;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+::ng-deep .p-datatable-header {
+    background: #ffffff !important;
+    color: #374151;
+    border: 1px solid #ffffff !important;
+    padding: 1rem 1rem;
+    font-weight: 700;
+}
+
+::ng-deep .p-input-icon-left {
+    justify-content: right !important;
+    float: right;
+    padding-bottom: 5px;
 }

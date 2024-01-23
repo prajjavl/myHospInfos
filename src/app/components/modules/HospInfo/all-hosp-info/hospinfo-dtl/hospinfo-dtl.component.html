@@ -1,27 +1,52 @@
-
-<!-- ..................................................................... -->
 <div class="myHeader">
-    <h5 class="header">Hospital Information Details</h5>
+    <!-- <h5 class="header">Hospital Information Details</h5> -->
     <div class="mySearch">
-        <label for="status">Search: </label>
+        <label for="status">Trans Status: </label><br>
         <select [(ngModel)]="status" name="status">
             <option value="">All</option>
             <option *ngFor="let statusOption of statusOptions" [value]="statusOption">{{ statusOption }}</option>
         </select>
-        <button (click)="search()" class="pl-2 pr-2 mx-2 search-button">Search</button>
+        <button (click)="searchByTransStatus()" class="pl-2 pr-2 mx-2 search-button">Search</button>
+    </div>
+    <div class="mySearch">
+        <label for="hospCode">Hospital Code: </label><br>
+        <select [(ngModel)]="hospCode" name="hospCode">
+            <option value="">All</option>
+            <option *ngFor="let codeOption of hospCodeOptions" [value]="codeOption">{{ codeOption }}</option>
+        </select>
+        <button (click)="searchByHospCode()" class="pl-2 pr-2 mx-2 search-button">Search</button>
+    </div>    
+    <div class="my_Search">
+        <label>Create New Record</label><br>
+        <button class="btn my_button" routerLink="/createInfo">+</button>
     </div>
 </div>
-
+<div class="line"></div>
 <div class="card">
-    <p-table #dt1 [value]="hospitals" dataKey="id" [rows]="5" [showCurrentPageReport]="true" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+    <p-table #dt1 [value]="hospitals" dataKey="id" [rows]="5" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[5, 10, 20, 50]" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['hospCode', 'hospInfoDtls.hospName', 'hospInfoDtls.hospOwnerName', 'hospInfoDtls.hospRegisteredNo', 'hospInfoDtls.hospShortName']">
+        <ng-template pTemplate="caption">
+            <div class="flex globalSearch justify-content-end align-items-center">
+                <div class="p-input-icon-left">
+                    <i class="fa fa-search mr-1"></i>
+                    <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                        placeholder="Search" />`
+                </div>
+            </div>
+        </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th>HospCode</th>
-                <th>Name</th>
-                <th>Owner Name</th>
-                <th>Registered No</th>
-                <th>Short Name</th>
+                <th pSortableColumn="hospCode">HospCode <p-sortIcon field="hospCode"></p-sortIcon></th>
+                <th pSortableColumn="hospInfoDtls.hospName">Name <p-sortIcon field="hospInfoDtls.hospName"></p-sortIcon>
+                </th>
+                <th pSortableColumn="hospInfoDtls.hospOwnerName">Owner Name <p-sortIcon
+                        field="hospInfoDtls.hospOwnerName"></p-sortIcon></th>
+                <th pSortableColumn="hospInfoDtls.hospRegisteredNo">Registered No <p-sortIcon
+                        field="hospInfoDtls.hospRegisteredNo"></p-sortIcon></th>
+                <th pSortableColumn="hospInfoDtls.hospShortName">Short Name<p-sortIcon
+                        field="hospInfoDtls.hospShortName"></p-sortIcon></th>
                 <th></th>
             </tr>
         </ng-template>

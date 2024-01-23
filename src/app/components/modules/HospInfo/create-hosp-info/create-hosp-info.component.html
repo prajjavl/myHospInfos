@@ -10,23 +10,23 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="recordStatus">Record Status<small class="warningMsg">*</small></label>
-                    <p-dropdown id="recordStatus" name="recordStatus" [(ngModel)]="hospInfo.recordStatus"
-                        [options]="recordStatusOptions" optionLabel="label" placeholder="Select Record Status"
-                        #recordStatus="ngModel" [required]="true"></p-dropdown>
+                    <select id="recordStatus" name="recordStatus" class="form-control" [(ngModel)]="hospInfo.recordStatus" required #recordStatus="ngModel" place="Select Record Status">
+                        <option value="" disabled selected>Select Record Status</option>
+                        <option *ngFor="let status of recordStatusOptions" [value]="status.value">{{ status.label }}</option>
+                    </select>
                     <div *ngIf="recordStatus.invalid && (recordStatus.dirty || recordStatus.touched)">
-                        <small class="text-danger" *ngIf="recordStatus.errors?.['required']">Record Status is
-                            required</small>
+                        <small class="text-danger" *ngIf="recordStatus.errors?.['required']">Record Status is required</small>
                     </div>
                 </div>
-
+                
                 <div class="form-group col-md-4">
                     <label for="hospTransStatusId">Transaction Status<small class="warningMsg">*</small></label>
-                    <p-dropdown id="hospTransStatusId" name="hospTransStatusId" [(ngModel)]="hospInfo.hospTransStatusId"
-                        [options]="hospTransStatusOptions" placeholder="Select Transaction Record Status"
-                        [required]="true" #hospTransStatusId="ngModel"></p-dropdown>
+                    <select id="hospTransStatusId" name="hospTransStatusId" class="form-control" [(ngModel)]="hospInfo.hospTransStatusId" required #hospTransStatusId="ngModel">
+                        <option value="" disabled selected>Select Transaction Record Status</option>
+                        <option *ngFor="let status of hospTransStatusOptions" [value]="status.value">{{ status.label }}</option>
+                    </select>
                     <div *ngIf="hospTransStatusId.invalid && (hospTransStatusId.dirty || hospTransStatusId.touched)">
-                        <small class="text-danger" *ngIf="hospTransStatusId.errors?.['required']">Transaction Status is
-                            required</small>
+                        <small class="text-danger" *ngIf="hospTransStatusId.errors?.['required']">Transaction Status is required</small>
                     </div>
                 </div>
 
@@ -119,14 +119,15 @@
 
                 <div class="form-group col-md-6">
                     <label for="hospState">State<small class="warningMsg">*</small></label>
-                    <p-dropdown id="hospState" name="hospState" [(ngModel)]="hospInfo.hospCommunicationDtls.hospState"
-                        [options]="stateOptions" placeholder="Select State" [required]="true"
-                        #hospState="ngModel"></p-dropdown>
+                    <select id="hospState" name="hospState" class="form-control" [(ngModel)]="hospInfo.hospCommunicationDtls.hospState"
+                        [required]="true" #hospState="ngModel">
+                        <option value="" disabled selected>Select State</option>
+                        <option *ngFor="let state of stateOptions" [value]="state.value">{{ state.label }}</option>
+                    </select>
                     <div *ngIf="hospState.invalid && (hospState.dirty || hospState.touched)">
                         <small class="text-danger" *ngIf="hospState.errors?.['required']">State is required</small>
                     </div>
-                </div>
-
+                </div>                
             </div>
 
             <div class="form-row">

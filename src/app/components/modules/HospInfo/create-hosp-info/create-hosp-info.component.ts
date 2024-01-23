@@ -14,10 +14,9 @@ export class CreateHospInfoComponent implements OnInit {
     hospInfoDtls: {},
     hospCommunicationDtls: {}
   };
-  // Inside your component class
   recordStatusOptions = [
     { label: 'Active', value: 'Active' },
-    // { label: 'Inactive', value: 'Inactive' }
+    { label: 'Inactive', value: 'Inactive' }
   ];
   hospTransStatusOptions: SelectItem[] = [
     { label: 'Pending', value: 'Pending' },
@@ -40,16 +39,16 @@ export class CreateHospInfoComponent implements OnInit {
   createHosp(): void {
     this.hospInfoService.createHospInfo(this.hospInfo).subscribe(
       response => {
-        this.openSnackBar('Hospital created successfully with HospId: ', this.hospInfo.hospId);
+        this.openSnackBar('Hospital created successfully.', this.hospInfo.hospCde);
+        setTimeout(() => {
+          this.router.navigate(['/hospInfo']);
+        }, 3000);
       },
       error => {
-        console.error('Error creating hospital:', error);
-        this.openSnackBar('Failed to create hospital', 'Close');
+        console.error('duplicate entry for hospital name, email or mobileNo:', error);
+        this.openSnackBar('duplicate entry for hospital name, email or mobileNo', 'Close');
       }
     );
-    setTimeout(() => {
-      this.router.navigate(['/hospInfo']);
-    }, 3000);
   }
 
   resetForm(): void {

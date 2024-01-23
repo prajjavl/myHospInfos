@@ -22,7 +22,7 @@ import { ButtonModule } from 'primeng/button';
 import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
 import { DropdownModule } from 'primeng/dropdown';
-
+import { InputTextModule } from 'primeng/inputtext';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +49,8 @@ import { DropdownModule } from 'primeng/dropdown';
     ButtonModule,
     AvatarModule,
     AvatarGroupModule,
-    DropdownModule
+    DropdownModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]

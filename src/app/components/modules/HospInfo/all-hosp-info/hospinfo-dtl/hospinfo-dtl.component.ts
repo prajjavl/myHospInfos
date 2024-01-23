@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Table } from 'primeng/table';
 import { HospInfoService } from 'src/app/components/services/hosp-info.service';
 
 @Component({
@@ -9,20 +10,25 @@ import { HospInfoService } from 'src/app/components/services/hosp-info.service';
   styleUrls: ['./hospinfo-dtl.component.css']
 })
 export class HospinfoDtlComponent {
+  @ViewChild('dt1') dt1: Table | undefined;
 
   hospitals: any[] = [];
   status: string = '';
+  hospCode: string = '';
   statusOptions: string[] = [];
   dataAvailable: boolean = true;
+  hospCodeOptions: string[] = [];
+  hospCodeAvailable: boolean = true;
 
   constructor(private hospInfoService: HospInfoService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getStatusOptions();
-    this.search();
+    this.getHospCodeOptions();
+    this.searchByTransStatus();
+    this.searchByHospCode();
   }
-
-  search(): void {
+  searchByTransStatus(): void {
     // If no status is selected, fetch all hospitals
     if (!this.status) {
       this.getAllHospitals();
@@ -33,6 +39,21 @@ export class HospinfoDtlComponent {
         this.checkDataAvailability();
         // If no data is available for the selected status, fetch all hospitals
         if (!this.dataAvailable) {
+          this.getAllHospitals();
+        }
+      });
+    }
+  }
+
+  searchByHospCode() {
+    if (!this.hospCode) {
+      this.getAllHospitals();
+    } else {
+      // Fetch hospitals based on hospCode
+      this.hospInfoService.getHospByHospCode(this.hospCode).subscribe(data => {
+        this.hospitals = data;
+        this.checkDataAvailability();
+        if (!this.hospCodeAvailable) {
           this.getAllHospitals();
         }
       });
@@ -53,12 +74,20 @@ export class HospinfoDtlComponent {
     });
   }
 
+  getHospCodeOptions(): void {
+    // Fetch all hospitals
+    this.hospInfoService.getHospInfo().subscribe(data => {
+      this.hospCodeOptions = [...new Set(data.flatMap(hospital => hospital.hospCode))];
+    });
+  }
+
   deleteMyprofile(hospId: any): void {
     this.hospInfoService.deleteHospital(hospId).subscribe(() => {
-      this.getStatusOptions(); 
+      this.getStatusOptions();
       this.openSnackBar('Hospital Deleted successfully', 'Close');
       setTimeout(() => {
-        this.search(); 
+        this.searchByTransStatus();
+        this.searchByHospCode();
       }, 300);
     });
   }

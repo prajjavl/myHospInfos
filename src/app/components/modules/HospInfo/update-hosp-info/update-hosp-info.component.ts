@@ -19,7 +19,7 @@ export class UpdateHospInfoComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.hospInfo = {
-        hospInfoDtls: {},  // Initialize hospInfoDtls property
+        hospInfoDtls: {},  
         hospCommunicationDtls: {}
       };
       this.hospInfo.hospId = +params['hospId'];

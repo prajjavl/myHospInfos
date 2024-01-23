@@ -18,6 +18,11 @@ export class HospInfoService {
     return this.http.get<any[]>(`${this.apiUrl}/search/${status}`);
   }
 
+  getHospByHospCode(hospCode: string): Observable<any[]> {
+    const url = `${this.apiUrl}/search/HospCode/${hospCode}`;
+    return this.http.get<any[]>(url);
+  }
+
   createHospInfo(hospInfo: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/create`, hospInfo);
   }
