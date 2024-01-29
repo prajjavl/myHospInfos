@@ -1,7 +1,7 @@
 /* Add your styling for the navbar here */
 .navbar {
-    background-color: #333;
-    padding: 35px;
+    background-color: #5c0b78;
+    padding: 25px;
     border-radius: 0;
 }
 
@@ -12,10 +12,13 @@
     position: absolute;
 }
 
-.logo img {
-    height: 60px;
-    width: 100px;
-    /* Adjust the height as needed */
+.myImg {
+    height: 30px;
+    width: 30px;
+    color: #fff;
+    background-color: aliceblue;
+    border-radius: 50%;
+    padding: 5px;
 }
 
 .nav-links {
@@ -35,9 +38,15 @@
     font-size: 18px;
 }
 
-.nav-links a:hover {
+.aboutUs{
+    background-color: #5c0b78;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.nav-links a:hover, img:hover {
     color: #ffcc00;
-    /* Change color on hover as needed */
 }
 
 .text {

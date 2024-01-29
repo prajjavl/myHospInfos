@@ -109,7 +109,6 @@
     display: none;
 }
 
-
 :host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
     background-color: #f4f6fc;
     border: none;

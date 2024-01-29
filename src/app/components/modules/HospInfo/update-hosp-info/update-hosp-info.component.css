@@ -1,9 +1,28 @@
+.myContainer{
+    background-color: #ffffff;
+}
+.box_in {
+    background: rgba(255, 255, 255, 0.55);
+    border: 5px solid #dddddd;
+    border-style: double;
+    overflow: hidden;
+    margin: 2%;
+}
+
 .header {
-    border-bottom: 1px solid darkblue;
-    margin-bottom: 40px;
-    font-size: 18px;
-    font-weight: 500;
-    color: darkblue;
+    margin-bottom: 30px;
+    background: #ededed;
+    padding: 15px;
+    font-size: 14px;
+    border: 2px solid #e7e5e5;
+    font-weight: 600;
+    color: black;
+    height: 50px;
+}
+
+.m_f{
+    text-transform: titlecase;
+    color: red;
 }
 
 .my_title {
@@ -19,14 +38,6 @@
     background: #46fbdf;
 }
 
-.box_in {
-    background: rgba(239, 234, 234, 0.55);
-    padding: 15px !important;
-    border: 1px solid rgba(255, 255, 255, .55);
-    border-radius: 5px;
-    overflow: hidden;
-}
-
 .mt2 {
     margin-top: 20px;
 }
@@ -37,11 +48,11 @@ input {
     font-weight: 300;
     line-height: 29px;
     background: white;
-    border: 1px solid #3860b7;
-    border-radius: 3px;
+    border: 1px solid #dddddd;
+    border-radius: 2px;
     padding: 3px 5px;
     width: 350px;
-    margin-left: 14px;
+    margin-left: 21px;
 }
 
 textarea {
@@ -89,11 +100,64 @@ label {
     /* Adjust the margin as needed */
 }
 
-.modifiedBy-form-control{
+.modifiedBy-form-control {
     width: 200px;
     padding: 2px 5px;
-} 
+}
 
-.text-danger{
-    margin-left: 15px;
+.text-danger {
+    margin-left: 23px;
+}
+
+/* Apply styles to the PrimeNG dropdown using :ng-deep */
+
+/* Style for the select tag */
+select{
+    width: 250px;
+    padding: 0.375rem 0.75rem;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-left: 20px;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Style for the select tag when it is focused */
+select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Style for the options within the select dropdown */
+option {
+    padding: 15px;
+    background: #fff;
+    color: #495057;
+}
+
+/* Style for the selected option */
+option:checked {
+    background: #007bff;
+    color: #fff;
+}
+
+/* Style for the disabled option */
+option:disabled {
+    color: #15ee06;
+}
+
+option:hover {
+    color: #15ee06;
+    background-color: red;
+}
+
+.warningMsg {
+    color: red;
+    font-size: 10px;
+    font-weight: 900;
 }

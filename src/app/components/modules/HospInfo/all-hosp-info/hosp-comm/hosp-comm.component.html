@@ -15,20 +15,14 @@
             <option *ngFor="let codeOption of hospCodeOptions" [value]="codeOption">{{ codeOption }}</option>
         </select>
         <button (click)="searchByHospCode()" class="pl-2 pr-2 mx-2 search-button">Search</button>
-    </div>    
+    </div>
     <div class="my_Search">
         <label>Create New Record</label><br>
         <button class="btn my_button" routerLink="/createInfo">+</button>
     </div>
 </div>
 <div class="card">
-    <p-table
-        #dt1
-        [value]="hospitals"
-        dataKey="id"
-        [rows]="5"
-        [showCurrentPageReport]="true"
-        [paginator]="true"
+    <p-table #dt1 [value]="hospitals" dataKey="id" [rows]="3" [showCurrentPageReport]="true" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['hospCode', 'hospCommunicationDtls.hospEmailId', 'hospCommunicationDtls.hospMobileNo', 'hospCommunicationDtls.hospAddress', 'hospCommunicationDtls.hospState']">
         <ng-template pTemplate="caption">
@@ -43,14 +37,22 @@
         <ng-template pTemplate="header">
             <tr>
                 <th pSortableColumn="hospCode">HospCode <p-sortIcon field="hospCode"></p-sortIcon></th>
-                <th pSortableColumn="hospCommunicationDtls.hospEmailId">Email Id <p-sortIcon field="hospCommunicationDtls.hospEmailId"></p-sortIcon></th>
-                <th pSortableColumn="hospCommunicationDtls.hospMobileNo">Mobile No <p-sortIcon field="hospCommunicationDtls.hospMobileNo"></p-sortIcon></th>
-                <th pSortableColumn="hospCommunicationDtls.hospAddress">Address <p-sortIcon field="hospCommunicationDtls.hospAddress"></p-sortIcon></th>
-                <th pSortableColumn="hospCommunicationDtls.hospLandMark">Land Mark <p-sortIcon field="hospCommunicationDtls.hospLandMark"></p-sortIcon></th>
-                <th pSortableColumn="hospCommunicationDtls.hospCity">City <p-sortIcon field="hospCommunicationDtls.hospCity"></p-sortIcon></th>
-                <th pSortableColumn="hospCommunicationDtls.hospDistrict">District <p-sortIcon field="hospCommunicationDtls.hospDistrict"></p-sortIcon></th>
-                <th pSortableColumn="hospCommunicationDtls.hospState">State <p-sortIcon field="hospCommunicationDtls.hospState"></p-sortIcon></th>
-                <th pSortableColumn="hospCommunicationDtls.hospPincode">Pincode <p-sortIcon field="hospCommunicationDtls.hospPincode"></p-sortIcon></th>
+                <th pSortableColumn="hospCommunicationDtls.hospEmailId">Email Id <p-sortIcon
+                        field="hospCommunicationDtls.hospEmailId"></p-sortIcon></th>
+                <th pSortableColumn="hospCommunicationDtls.hospMobileNo">Mobile No <p-sortIcon
+                        field="hospCommunicationDtls.hospMobileNo"></p-sortIcon></th>
+                <th pSortableColumn="hospCommunicationDtls.hospAddress">Address <p-sortIcon
+                        field="hospCommunicationDtls.hospAddress"></p-sortIcon></th>
+                <th pSortableColumn="hospCommunicationDtls.hospLandMark">Land Mark <p-sortIcon
+                        field="hospCommunicationDtls.hospLandMark"></p-sortIcon></th>
+                <th pSortableColumn="hospCommunicationDtls.hospCity">City <p-sortIcon
+                        field="hospCommunicationDtls.hospCity"></p-sortIcon></th>
+                <th pSortableColumn="hospCommunicationDtls.hospDistrict">District <p-sortIcon
+                        field="hospCommunicationDtls.hospDistrict"></p-sortIcon></th>
+                <th pSortableColumn="hospCommunicationDtls.hospState">State <p-sortIcon
+                        field="hospCommunicationDtls.hospState"></p-sortIcon></th>
+                <th pSortableColumn="hospCommunicationDtls.hospPincode">Pincode <p-sortIcon
+                        field="hospCommunicationDtls.hospPincode"></p-sortIcon></th>
                 <th></th>
             </tr>
         </ng-template>
@@ -74,18 +76,10 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="paginatorleft">
-            <p-button
-                type="button"
-                icon="pi pi-plus"
-                styleClass="p-button-text"
-            ></p-button>
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
         </ng-template>
         <ng-template pTemplate="paginatorright">
-            <p-button
-                type="button"
-                icon="pi pi-cloud"
-                styleClass="p-button-text"
-            ></p-button>
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
         </ng-template>
     </p-table>
 </div>

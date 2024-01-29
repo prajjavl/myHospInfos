@@ -23,7 +23,7 @@
 </div>
 
 <div class="card">
-    <p-table #dt1 [value]="hospitals" dataKey="id" [rows]="5" [showCurrentPageReport]="true" [paginator]="true"
+    <p-table #dt1 [value]="hospitals" dataKey="id" [rows]="3" [showCurrentPageReport]="true" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['hospCode', 'recordStatus', 'createdBy', 'modifiedBy', 'hospTransStatusId']">
         <ng-template pTemplate="caption">

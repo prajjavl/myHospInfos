@@ -23,8 +23,8 @@
 </div>
 <div class="line"></div>
 <div class="card">
-    <p-table #dt1 [value]="hospitals" dataKey="id" [rows]="5" [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[5, 10, 20, 50]" [paginator]="true"
+    <p-table #dt1 [value]="hospitals" dataKey="id" [rows]="3" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[3, 5, 10, 20]" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['hospCode', 'hospInfoDtls.hospName', 'hospInfoDtls.hospOwnerName', 'hospInfoDtls.hospRegisteredNo', 'hospInfoDtls.hospShortName']">
         <ng-template pTemplate="caption">
@@ -39,7 +39,7 @@
         <ng-template pTemplate="header">
             <tr>
                 <th pSortableColumn="hospCode">HospCode <p-sortIcon field="hospCode"></p-sortIcon></th>
-                <th pSortableColumn="hospInfoDtls.hospName">Name <p-sortIcon field="hospInfoDtls.hospName"></p-sortIcon>
+                <th pSortableColumn="hospInfoDtls.hospName">Hospital Name<p-sortIcon field="hospInfoDtls.hospName"></p-sortIcon>
                 </th>
                 <th pSortableColumn="hospInfoDtls.hospOwnerName">Owner Name <p-sortIcon
                         field="hospInfoDtls.hospOwnerName"></p-sortIcon></th>
